@@ -5,5 +5,5 @@ import com.clovestranger.clove_blog.model.Article;
 import java.util.List;
 
 public interface ArticleService {
-    List<Article> articleLists(int page, int pageSize, String searchInput, boolean useStatus);
+    List<Article> articleLists();
 }

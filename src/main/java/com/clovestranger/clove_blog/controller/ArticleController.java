@@ -16,11 +16,11 @@ import java.util.List;
 public class ArticleController {
 
     @Resource
-    ArticleService articleService;
+    private ArticleService articleService;
 
-    @RequestMapping(value = "/list", method = RequestMethod.POST)
-    public List<Article> articleLists(int page, int pageSize, String searchInput, boolean useStatus) {
-        return articleService.articleLists(page, pageSize, searchInput, useStatus);
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
+    public List<Article> articleLists() {
+        return articleService.articleLists();
     }
 
     @GetMapping("test")

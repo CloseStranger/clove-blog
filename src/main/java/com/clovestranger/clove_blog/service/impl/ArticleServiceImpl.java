@@ -12,9 +12,9 @@ import java.util.List;
 public class ArticleServiceImpl implements ArticleService {
     @Resource
     private ArticleMapper articleMapper;
-
+ 
     @Override
-    public List<Article> articleLists(int page, int pageSize, String searchInput, boolean useStatus) {
-        return articleMapper.articleLists(page, pageSize, searchInput, useStatus);
+    public List<Article> articleLists() {
+        return articleMapper.articleLists();
     }
 }
