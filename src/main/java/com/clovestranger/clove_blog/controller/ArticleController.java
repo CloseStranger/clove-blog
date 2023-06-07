@@ -3,15 +3,14 @@ package com.clovestranger.clove_blog.controller;
 import com.clovestranger.clove_blog.model.Article;
 import com.clovestranger.clove_blog.service.ArticleService;
 import jakarta.annotation.Resource;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@Controller
+@RestController
 @RequestMapping("/article")
 public class ArticleController {
 
@@ -23,7 +22,7 @@ public class ArticleController {
         return articleService.articleLists();
     }
 
-    @GetMapping("test")
+    @RequestMapping(value = "/test", method = RequestMethod.GET)
     public String test(@RequestParam(value = "number", defaultValue = "123") String number) {
         return String.format("%s!", number);
     }

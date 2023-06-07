@@ -24,4 +24,5 @@ public class CloveBlogApplication {
         return String.format("%s!", name);
     }
 
+
 }
