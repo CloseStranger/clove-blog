@@ -5,6 +5,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import java.sql.Timestamp;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -12,6 +14,6 @@ import lombok.ToString;
 public class Article {
     private String resId;
     private String content;
-    private long createTime;
-    private long updateTime;
+    private Timestamp createTime;
+    private Timestamp updateTime;
 }
