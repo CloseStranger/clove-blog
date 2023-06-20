@@ -12,7 +12,7 @@ import java.sql.Timestamp;
 @AllArgsConstructor
 @ToString
 public class Article {
-    private String resId;
+    private String resourceId;
     private String content;
     private Timestamp createTime;
     private Timestamp updateTime;

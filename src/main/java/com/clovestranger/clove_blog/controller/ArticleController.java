@@ -22,9 +22,9 @@ public class ArticleController {
         return CommonResult.success(list);
     }
 
-    @RequestMapping(value = "/test", method = RequestMethod.GET)
-    public String test(@RequestParam(value = "number", defaultValue = "123") String number) {
-        return String.format("%s!", number);
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    @ResponseBody
+    public void addArticle(@RequestBody Article article) {
+        articleService.addArticle(article);
     }
-
 }

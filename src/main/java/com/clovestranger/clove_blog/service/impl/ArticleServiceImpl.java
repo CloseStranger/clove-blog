@@ -7,6 +7,7 @@ import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 @Service
@@ -18,5 +19,14 @@ public class ArticleServiceImpl implements ArticleService {
     @ResponseBody
     public List<Article> articleLists() {
         return articleMapper.articleLists();
+    }
+
+    @Override
+    @ResponseBody
+    public void addArticle(Article article) {
+        article.setResourceId("11111111111");
+        article.setCreateTime(new Timestamp(System.currentTimeMillis()));
+        article.setUpdateTime(new Timestamp(System.currentTimeMillis()));
+        articleMapper.addArticle(article);
     }
 }

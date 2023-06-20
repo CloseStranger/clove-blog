@@ -5,4 +5,8 @@
         SELECT *
         FROM articles
     </select>
+    <insert id="addArticle" parameterType="com.clovestranger.clove_blog.model.Article">
+        insert into articles
+        values (#{createTime}, #{updateTime}, #{resourceId}, #{content})
+    </insert>
 </mapper>
