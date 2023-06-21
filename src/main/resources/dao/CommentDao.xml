@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.clovestranger.clove_blog.dao.CommentMapper">
+    <insert id="addComment" parameterType="Map">
+        insert into comments (resourceId, commentId, commentContent, commentUserName)
+        values (#{resourceId}, #{commentId}, #{commentContent}, #{commentUserName})
+    </insert>
+    <!--    <delete id="delArticle" parameterType="String">-->
+    <!--        delete-->
+    <!--        from articles-->
+    <!--        where resourceId = #{resourceId}-->
+    <!--    </delete>-->
+    <!--    <update id="updateArticle" parameterType="com.clovestranger.clove_blog.model.Article">-->
+    <!--        update articles-->
+    <!--        set content    = #{content},-->
+    <!--            updateTime = #{updateTime}-->
+    <!--        where resourceId = #{resourceId}-->
+    <!--    </update>-->
+    <select id="getComment" resultType="com.clovestranger.clove_blog.model.Comment" parameterType="String">
+        select *
+        from comments
+        where resourceId = #{resourceId}
+    </select>
+</mapper>

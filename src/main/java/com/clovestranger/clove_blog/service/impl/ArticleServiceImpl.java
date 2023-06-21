@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.sql.Timestamp;
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class ArticleServiceImpl implements ArticleService {
@@ -17,16 +18,29 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Override
     @ResponseBody
-    public List<Article> articleLists() {
-        return articleMapper.articleLists();
+    public void addArticle(Article article) {
+        article.setResourceId(String.valueOf(UUID.randomUUID()));
+        article.setCreateTime(new Timestamp(System.currentTimeMillis()));
+        article.setUpdateTime(new Timestamp(System.currentTimeMillis()));
+        articleMapper.addArticle(article);
     }
 
     @Override
     @ResponseBody
-    public void addArticle(Article article) {
-        article.setResourceId("11111111111");
-        article.setCreateTime(new Timestamp(System.currentTimeMillis()));
+    public void delArticle(String resourceId) {
+        articleMapper.delArticle(resourceId);
+    }
+
+    @Override
+    @ResponseBody
+    public void updateArticle(Article article) {
         article.setUpdateTime(new Timestamp(System.currentTimeMillis()));
-        articleMapper.addArticle(article);
+        articleMapper.updateArticle(article);
+    }
+
+    @Override
+    @ResponseBody
+    public List<Article> articleLists() {
+        return articleMapper.articleLists();
     }
 }

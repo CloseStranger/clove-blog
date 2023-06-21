@@ -5,7 +5,13 @@ import com.clovestranger.clove_blog.model.Article;
 import java.util.List;
 
 public interface ArticleService {
-    List<Article> articleLists();
 
     void addArticle(Article article);
+
+    void delArticle(String resourceId);
+
+    void updateArticle(Article article);
+
+    List<Article> articleLists();
+    
 }

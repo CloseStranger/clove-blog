@@ -1,12 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.clovestranger.clove_blog.dao.ArticleMapper">
-    <select id="articleLists" resultType="com.clovestranger.clove_blog.model.Article">
-        SELECT *
-        FROM articles
-    </select>
+
     <insert id="addArticle" parameterType="com.clovestranger.clove_blog.model.Article">
-        insert into articles
+        insert into articles (createTime, updateTime, resourceId, content)
         values (#{createTime}, #{updateTime}, #{resourceId}, #{content})
     </insert>
+    <delete id="delArticle" parameterType="String">
+        delete
+        from articles
+        where resourceId = #{resourceId}
+    </delete>
+    <update id="updateArticle" parameterType="com.clovestranger.clove_blog.model.Article">
+        update articles
+        set content    = #{content},
+            updateTime = #{updateTime}
+        where resourceId = #{resourceId}
+    </update>
+    <select id="articleLists" resultType="com.clovestranger.clove_blog.model.Article">
+        select *
+        from articles
+    </select>
 </mapper>
