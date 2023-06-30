@@ -15,7 +15,7 @@ public class ArticleController {
     @Resource
     private ArticleService articleService;
 
- 
+
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     @ResponseBody
     public void addArticle(@RequestBody Article article) {

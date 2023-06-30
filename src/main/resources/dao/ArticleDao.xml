@@ -3,12 +3,15 @@
 <mapper namespace="com.clovestranger.clove_blog.dao.ArticleMapper">
 
     <insert id="addArticle" parameterType="com.clovestranger.clove_blog.model.Article">
-        insert into articles (articleResId, content, tags, hotContent, vipContent,
-                              visible, coverImg, contentSummary,
-                              category, createTime, updateTime)
-        values (#{articleResId}, #{content}, #{tags}, #{hotContent},
-                #{vipContent}, #{visible}, #{coverImg}, #{contentSummary},
-                #{category}, #{createTime}, #{updateTime})
+        insert into articles (articleResId, content, hotContent, vipContent,
+        visible, coverImg, contentSummary,
+        createTime, updateTime)
+        values (#{articleResId}, #{content}, #{hotContent},#{vipContent}, #{visible}, #{coverImg},
+        #{contentSummary},#{createTime}, #{updateTime});
+        insert into tagarticlemiddleware (articleResId, tagResId) values
+        <foreach collection="tags" item="item" separator=",">
+            (#{articleResId},#{item})
+        </foreach>
     </insert>
     <delete id="delArticle" parameterType="String">
         delete

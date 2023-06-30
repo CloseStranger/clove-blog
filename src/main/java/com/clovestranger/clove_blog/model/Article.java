@@ -15,13 +15,13 @@ public class Article {
     private int id;
     private String articleResId;
     private String content;
-    private String tags;
+    private String[] tags;
     private Boolean hotContent;
     private Boolean vipContent;
     private Boolean visible;
     private String coverImg;
     private String contentSummary;
-    private String category;
+    private String[] category;
     private Timestamp createTime;
     private Timestamp updateTime;
 }

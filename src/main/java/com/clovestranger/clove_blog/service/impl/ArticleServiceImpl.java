@@ -22,6 +22,7 @@ public class ArticleServiceImpl implements ArticleService {
         article.setArticleResId(String.valueOf(UUID.randomUUID()));
         article.setCreateTime(new Timestamp(System.currentTimeMillis()));
         article.setUpdateTime(new Timestamp(System.currentTimeMillis()));
+        System.out.println(article);
         articleMapper.addArticle(article);
     }
 
