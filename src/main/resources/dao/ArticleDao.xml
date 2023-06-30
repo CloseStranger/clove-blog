@@ -3,13 +3,17 @@
 <mapper namespace="com.clovestranger.clove_blog.dao.ArticleMapper">
 
     <insert id="addArticle" parameterType="com.clovestranger.clove_blog.model.Article">
-        insert into articles (createTime, updateTime, resourceId, content)
-        values (#{createTime}, #{updateTime}, #{resourceId}, #{content})
+        insert into articles (articleResId, content, tags, hotContent, vipContent,
+                              visible, coverImg, contentSummary,
+                              category, createTime, updateTime)
+        values (#{articleResId}, #{content}, #{tags}, #{hotContent},
+                #{vipContent}, #{visible}, #{coverImg}, #{contentSummary},
+                #{category}, #{createTime}, #{updateTime})
     </insert>
     <delete id="delArticle" parameterType="String">
         delete
         from articles
-        where resourceId = #{resourceId}
+        where articleResId = #{articleResId}
     </delete>
     <update id="updateArticle" parameterType="com.clovestranger.clove_blog.model.Article">
         update articles

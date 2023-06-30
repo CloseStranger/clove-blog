@@ -10,7 +10,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 public class Comment {
-    private String resourceId;
+    private String parentId;
     private String commentId;
     private String commentContent;
     private String commentUserName;

@@ -23,13 +23,13 @@ public class CommentController {
 
     @RequestMapping(value = "/delete", method = RequestMethod.DELETE)
     @ResponseBody
-    public void delComment(String commentId) {
+    public void delComment(@RequestParam(value = "commentId") String commentId) {
         commentService.delComment(commentId);
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     @ResponseBody
-    public void updateComment(Comment comment) {
+    public void updateComment(@RequestBody Comment comment) {
         commentService.updateComment(comment);
     }
 

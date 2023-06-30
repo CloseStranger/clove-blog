@@ -12,8 +12,16 @@ import java.sql.Timestamp;
 @AllArgsConstructor
 @ToString
 public class Article {
-    private String resourceId;
+    private int id;
+    private String articleResId;
     private String content;
+    private String tags;
+    private Boolean hotContent;
+    private Boolean vipContent;
+    private Boolean visible;
+    private String coverImg;
+    private String contentSummary;
+    private String category;
     private Timestamp createTime;
     private Timestamp updateTime;
 }

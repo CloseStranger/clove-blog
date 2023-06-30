@@ -15,14 +15,14 @@ public class ArticleController {
     @Resource
     private ArticleService articleService;
 
-
+ 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     @ResponseBody
     public void addArticle(@RequestBody Article article) {
         articleService.addArticle(article);
     }
 
-    @RequestMapping(value = "/update", method = RequestMethod.POST)
+    @RequestMapping(value = "/update", method = RequestMethod.PUT)
     @ResponseBody
     public void updateArticle(@RequestBody Article article) {
         articleService.updateArticle(article);
@@ -30,8 +30,8 @@ public class ArticleController {
 
     @RequestMapping(value = "/delete", method = RequestMethod.DELETE)
     @ResponseBody
-    public void delArticle(@RequestParam(value = "resourceId") String resourceId) {
-        articleService.delArticle(resourceId);
+    public void delArticle(@RequestParam(value = "articleResId") String articleResId) {
+        articleService.delArticle(articleResId);
     }
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)

@@ -10,10 +10,10 @@ public interface ArticleMapper {
 
     void addArticle(Article article);
 
-    void delArticle(String resourceId);
+    void delArticle(String articleResId);
 
     void updateArticle(Article article);
 
     List<Article> articleLists();
-    
+
 }

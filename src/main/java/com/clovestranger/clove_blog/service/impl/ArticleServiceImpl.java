@@ -19,7 +19,7 @@ public class ArticleServiceImpl implements ArticleService {
     @Override
     @ResponseBody
     public void addArticle(Article article) {
-        article.setResourceId(String.valueOf(UUID.randomUUID()));
+        article.setArticleResId(String.valueOf(UUID.randomUUID()));
         article.setCreateTime(new Timestamp(System.currentTimeMillis()));
         article.setUpdateTime(new Timestamp(System.currentTimeMillis()));
         articleMapper.addArticle(article);
@@ -27,8 +27,8 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Override
     @ResponseBody
-    public void delArticle(String resourceId) {
-        articleMapper.delArticle(resourceId);
+    public void delArticle(String articleResId) {
+        articleMapper.delArticle(articleResId);
     }
 
     @Override
