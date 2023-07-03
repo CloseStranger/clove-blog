@@ -36,8 +36,9 @@ public class ArticleController {
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     @ResponseBody
-    public CommonResult<List<Article>> articleLists() {
-        List<Article> list = articleService.articleLists();
+    public CommonResult<List<Article>> articleLists(Article article) {
+        System.out.println(article.toString());
+        List<Article> list = articleService.articleLists(article);
         return CommonResult.success(list);
     }
 }

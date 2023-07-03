@@ -41,7 +41,7 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Override
     @ResponseBody
-    public List<Article> articleLists() {
-        return articleMapper.articleLists();
+    public List<Article> articleLists(Article article) {
+        return articleMapper.articleLists(article);
     }
 }

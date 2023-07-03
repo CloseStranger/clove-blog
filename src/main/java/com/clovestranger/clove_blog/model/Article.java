@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -15,7 +16,7 @@ public class Article {
     private int id;
     private String articleResId;
     private String content;
-    private String[] tags;
+    private List<Tag> tags;
     private Boolean hotContent;
     private Boolean vipContent;
     private Boolean visible;

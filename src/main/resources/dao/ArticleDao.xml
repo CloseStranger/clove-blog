@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.clovestranger.clove_blog.dao.ArticleMapper">
-
+    <resultMap id="articleListsMap" type="com.clovestranger.clove_blog.model.Article" autoMapping="true">
+        <id property="articleResId" column="articleResId"/>
+        <collection property="tags" ofType="com.clovestranger.clove_blog.model.Tag">
+            <id property="id" column="tId"/>
+            <result property="tagLabel" column="tagLabel"/>
+        </collection>
+    </resultMap>
     <insert id="addArticle" parameterType="com.clovestranger.clove_blog.model.Article">
         insert into articles (articleResId, content, hotContent, vipContent,
         visible, coverImg, contentSummary,
@@ -24,8 +30,19 @@
             updateTime = #{updateTime}
         where resourceId = #{resourceId}
     </update>
-    <select id="articleLists" resultType="com.clovestranger.clove_blog.model.Article">
-        select *
-        from articles
+    <select id="articleLists" parameterType="com.clovestranger.clove_blog.model.Article" resultMap="articleListsMap">
+        select a.*,
+        c.tagLabel,
+        c.id as tId
+        from articles a
+        left join tagarticlemiddleware b
+        on a.articleResId = b.articleResId
+        left join tags c
+        on b.tagResId = c.tagResId
+        <where>
+            <if test="articleResId != null and articleResId != ''">
+                and a.articleResId like concat('%',#{articleResId},'%')
+            </if>
+        </where>
     </select>
 </mapper>

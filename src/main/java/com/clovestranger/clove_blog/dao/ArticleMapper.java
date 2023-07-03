@@ -14,6 +14,6 @@ public interface ArticleMapper {
 
     void updateArticle(Article article);
 
-    List<Article> articleLists();
+    List<Article> articleLists(Article article);
 
 }

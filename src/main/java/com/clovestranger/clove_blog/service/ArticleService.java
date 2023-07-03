@@ -9,9 +9,9 @@ public interface ArticleService {
     void addArticle(Article article);
 
     void delArticle(String articleResId);
- 
+
     void updateArticle(Article article);
 
-    List<Article> articleLists();
+    List<Article> articleLists(Article article);
 
 }
