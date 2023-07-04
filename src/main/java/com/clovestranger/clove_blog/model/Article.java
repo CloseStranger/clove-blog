@@ -25,4 +25,6 @@ public class Article {
     private String[] category;
     private Timestamp createTime;
     private Timestamp updateTime;
+    private String title;
+    private int sortNumber;
 }

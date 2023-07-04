@@ -12,6 +12,6 @@ public interface ArticleService {
 
     void updateArticle(Article article);
 
-    List<Article> articleLists(Article article);
+    List<Article> articleLists(Article article, String tagIds);
 
 }

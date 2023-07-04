@@ -43,6 +43,21 @@
             <if test="articleResId != null and articleResId != ''">
                 and a.articleResId like concat('%',#{articleResId},'%')
             </if>
+            <if test="hotContent != null">
+                and a.hotContent = #{hotContent}
+            </if>
+            <if test="vipContent != null">
+                and a.vipContent = #{vipContent}
+            </if>
+            <if test="visible != null">
+                and a.visible = #{visible}
+            </if>
+            <if test="contentSummary != null and contentSummary != ''">
+                and a.contentSummary like concat('%',#{contentSummary},'%')
+            </if>
+            <if test="title != null and title != ''">
+                and a.title like concat('%',#{title},'%')
+            </if>
         </where>
     </select>
 </mapper>

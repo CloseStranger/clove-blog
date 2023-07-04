@@ -8,8 +8,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.sql.Timestamp;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
+
 
 @Service
 public class ArticleServiceImpl implements ArticleService {
@@ -41,7 +41,34 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Override
     @ResponseBody
-    public List<Article> articleLists(Article article) {
-        return articleMapper.articleLists(article);
+    public List<Article> articleLists(Article article, String tagIds) {
+        List<Article> dbInfo = articleMapper.articleLists(article);
+        if (tagIds != null) {
+            List<Article> output = new ArrayList<>();
+//            String[] filterTags = Arrays.stream(tagIds.split(",")).sorted().toArray(String[]::new);
+//            dbInfo.forEach(item -> {
+//                String[] itemTags = item.getTags().stream().map(x -> Integer.toString(x.getId())).sorted().toArray(String[]::new);
+//                if (filterTags.length > itemTags.length) {
+//                    return;
+//                }
+//                boolean pushSignal = true;
+//                for (String filterTag : filterTags) {
+//                    pushSignal = pushSignal && (Arrays.binarySearch(itemTags, filterTag) != -1);
+//                }
+//                if (pushSignal) {
+//                    output.add(item);
+//                }
+//            });
+            List<String> filterTags = Arrays.stream(tagIds.split(",")).sorted().toList();
+            dbInfo.forEach(item -> {
+                List<String> itemTags = item.getTags().stream().map(x -> Integer.toString(x.getId())).toList();
+                if (new HashSet<>(itemTags).containsAll(filterTags)) {
+                    output.add(item);
+                }
+            });
+            return output;
+        }
+
+        return dbInfo;
     }
 }
