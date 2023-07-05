@@ -11,5 +11,6 @@ import lombok.ToString;
 @ToString
 public class Tag {
     private int id;
+    private String tagResId;
     private String tagLabel;
 }
