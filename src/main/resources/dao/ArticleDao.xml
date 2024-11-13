@@ -33,7 +33,7 @@
         where resourceId = #{resourceId}
     </update>
     <select id="articleLists" parameterType="com.clovestranger.clove_blog.model.Article" resultMap="articleListsMap">
-        select * from articles
+        select * from articles as a
         <!-- c.tagLabel,
         c.id as tId
         from articles a
@@ -61,6 +61,6 @@
                 and a.title like concat('%',#{title},'%')
             </if>
         </where> -->
-        <!-- order by a.updateTime desc; -->
+        order by a.createTime desc;
     </select>
 </mapper>
