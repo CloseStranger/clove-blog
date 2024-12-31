@@ -5,7 +5,7 @@ import lombok.ToString;
 
 @Data
 @ToString
-public class CommonResult<T> {
+public class CommonResult<T> { 
     private long code;
 
     private String message;
